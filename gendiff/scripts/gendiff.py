@@ -1,6 +1,5 @@
 import argparse
-import json, sys
-import subprocess
+import json
 
 
 def main(*args):
@@ -14,7 +13,9 @@ def main(*args):
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Compares two configuration files and shows a difference.')
+    parser = argparse.ArgumentParser(description="Compares two"
+                                                 " configuration files "
+                                                 "and shows a difference.")
 
     # position arguments
     parser.add_argument("first_file")
@@ -54,12 +55,14 @@ def result(first_file, second_file):
                     print(key + ": " + str(first_file[key]))
                 elif first_file[key] != second_file[key]:
                     result += "  " + '- ' + key + ": " + str(
-                        first_file[key]) + "\n" + "  " + '+ ' + key + ": " + str(
+                        first_file[key]) + "\n" + "  " + '+ ' + \
+                              key + ": " + str(
                         second_file[key]) + "\n"
                     print('- ' + key + ": " + str(first_file[key]))
                     print('+ ' + key + ": " + str(second_file[key]))
             else:
-                result += "  " + '- ' + key + ": " + str(first_file[key]) + "\n"
+                result += "  " + '- ' + key + ": " + \
+                          str(first_file[key]) + "\n"
                 print('- ' + key + ": " + str(first_file[key]))
         else:
             result += "  " + '+ ' + key + ": " + str(second_file[key]) + "\n"
