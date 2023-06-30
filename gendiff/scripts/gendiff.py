@@ -22,8 +22,8 @@ def main(*args):
         elif args[2] == "json":
             return json.dumps(result(first_file, second_file))
         elif args[2] == "stylish":
-            parse_result = result(first_file, second_file)
-            return generate_diff(parse_result, replacer=' ', space_count=4, _lvl=1)
+            res = result(first_file, second_file)
+            return generate_diff(res, replacer=' ', space_count=4, _lvl=1)
     else:
         return parse_args()
 
@@ -38,7 +38,8 @@ def parse_args():
     parser.add_argument("second_file")
 
     # optional arguments
-    parser.add_argument("-f", "--format", help="set format of output", default="stylish")
+    parser.add_argument("-f", "--format", help="set format "
+                                               "of output", default="stylish")
 
     args = parser.parse_args()
     if args.first_file.endswith('.json'):
@@ -80,7 +81,8 @@ def result(first_file, second_file):
     for key in key_list:
         if key in first_file:
             if key in second_file:
-                if isinstance(first_file[key], dict) and isinstance(second_file[key], dict):
+                if isinstance(first_file[key], dict) and \
+                        isinstance(second_file[key], dict):
                     a = result(first_file[key], second_file[key])
                     updated_dict[key] = a
                 else:
@@ -118,19 +120,28 @@ def result_format_flag(first_file, second_file, path=None):
         newpath = path + [key]
         if key in first_file:
             if key in second_file:
-                if isinstance(first_file[key], dict) and isinstance(second_file[key], dict):
-                    a = result_format_flag(first_file[key], second_file[key], newpath)
+                if isinstance(first_file[key], dict) and \
+                        isinstance(second_file[key], dict):
+                    a = result_format_flag(first_file[key],
+                                           second_file[key], newpath)
                     result_str += a
                 else:
                     if first_file[key] != second_file[key]:
                         key_path = '.'.join(newpath)
                         if isinstance(first_file[key], dict):
-                            result_str += f"Property '{key_path}' was updated. From [complex value] to '{second_file[key]}'\n"
+                            result_str += f"Property '{key_path}' was " \
+                                          f"updated. From [complex value]" \
+                                          f" to '{second_file[key]}'\n"
                         elif isinstance(second_file[key], dict):
-                            result_str += f"Property '{key_path}' was updated. From '{first_file[key]}' to [complex value]\n"
+                            result_str += f"Property '{key_path}'" \
+                                          f" was updated. From " \
+                                          f"'{first_file[key]}' to" \
+                                          f" [complex value]\n"
                         else:
-                            result_str += f"Property '{key_path}' was updated. From '{first_file[key]}' to '{second_file[key]}'\n"
-
+                            result_str += f"Property '{key_path}' " \
+                                          f"was updated. From " \
+                                          f"'{first_file[key]}' to " \
+                                          f"'{second_file[key]}'\n"
 
             else:
                 key_path = '.'.join(newpath)
@@ -138,9 +149,11 @@ def result_format_flag(first_file, second_file, path=None):
         else:
             key_path = '.'.join(newpath)
             if isinstance(second_file[key], dict):
-                result_str += f"Property '{key_path}' was added with value: [complex value]\n"
+                result_str += f"Property '{key_path}' " \
+                              f"was added with value: [complex value]\n"
             else:
-                result_str += f"Property '{key_path}' was added with value: '{second_file[key]}'\n"
+                result_str += f"Property '{key_path}'" \
+                              f" was added with value: '{second_file[key]}'\n"
     return result_str
 
 
@@ -153,8 +166,9 @@ def generate_diff(value, replacer=' ', space_count=1, _lvl=1):
                 if val != '':
                     result += ' '
             else:
-                result += f'{replacer * space_count * _lvl}{el}: '  # key to result str
-            result += generate_diff(val, replacer, space_count, _lvl + 1) + '\n'  # value to result str
+                result += f'{replacer * space_count * _lvl}{el}: '
+            result += generate_diff(val, replacer,
+                                    space_count, _lvl + 1) + '\n'
         result += replacer * space_count * (_lvl - 1) + '}'
     else:
         result = str(value)
