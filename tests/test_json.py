@@ -1,7 +1,7 @@
 import pytest
 import json
 
-from gendiff.scripts.gendiff import main
+from gendiff_1.scripts.gendiff import main
 
 
 @pytest.fixture

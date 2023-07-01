@@ -1,4 +1,4 @@
-from gendiff.gendiff import generate_diff
+from gendiff_1.gendiff_2 import generate_diff
 import argparse
 import json
 import yaml
