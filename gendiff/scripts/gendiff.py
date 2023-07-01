@@ -18,15 +18,15 @@ def generate_diff(*args):
             with open(args[1], 'r') as f:
                 second_file = yaml.safe_load(f)
 
-        parse_result = diff(first_file, second_file, args.format)
+        parse_result = diff(first_file, second_file, args[2])
 
-        if args.format == "stylish":
+        if args[2] == "stylish":
             # parse_result = result(first_file, second_file, args.format)
             return formatter(parse_result, replacer=' ', space_count=4, _lvl=1)
-        elif args.format == "plain":
+        elif args[2] == "plain":
             # return result(first_file, second_file, args.format)[:-2]
             return parse_result[:-1]
-        elif args.format == "json":
+        elif args[2] == "json":
             return json.dumps(parse_result)
         # if args[2] == "plain":
         #     return generate_diff(first_file, second_file)

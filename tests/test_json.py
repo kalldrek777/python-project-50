@@ -1,22 +1,22 @@
 import pytest
 import json
 
-from gendiff.scripts.gendiff import main
+from gendiff.scripts.gendiff import generate_diff
 
 
 @pytest.fixture
 def diff_json_files():
-    result_stylish = main('file1.json', 'file2.json', 'stylish')
-    result_plain = main('file1.json', 'file2.json', 'plain')
-    result_json = main('file1.json', 'file2.json', 'json')
+    result_stylish = generate_diff('file1.json', 'file2.json', 'stylish')
+    result_plain = generate_diff('file1.json', 'file2.json', 'plain')
+    result_json = generate_diff('file1.json', 'file2.json', 'json')
     return result_stylish, result_plain, result_json
 
 
 @pytest.fixture
 def diff_yaml_files():
-    result_stylish = main('filepath1.yml', 'filepath2.yml', 'stylish')
-    result_plain = main('filepath1.yml', 'filepath2.yml', 'plain')
-    result_json = main('filepath1.yml', 'filepath2.yml', 'json')
+    result_stylish = generate_diff('filepath1.yml', 'filepath2.yml', 'stylish')
+    result_plain = generate_diff('filepath1.yml', 'filepath2.yml', 'plain')
+    result_json = generate_diff('filepath1.yml', 'filepath2.yml', 'json')
     return result_stylish, result_plain, result_json
 
 
@@ -80,7 +80,7 @@ def test_json(diff_json_files):
             "Property 'group1.nest' was updated."
             " From [complex value] to 'str'\n"
             "Property 'group2' was removed\n"
-            "Property 'group3' was added with value: [complex value]\n")
+            "Property 'group3' was added with value: [complex value]")
     assert json.loads(c) == json.load(open('test_format_json.json'))
 
 
@@ -145,5 +145,5 @@ def test_yaml(diff_yaml_files):
             "Property 'group1.nest' was updated."
             " From [complex value] to 'str'\n"
             "Property 'group2' was removed\n"
-            "Property 'group3' was added with value: [complex value]\n")
+            "Property 'group3' was added with value: [complex value]")
     assert json.loads(c) == json.load(open('test_format_json.json'))
