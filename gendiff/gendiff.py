@@ -1,4 +1,4 @@
-def generate_diff(first_file, second_file, format_name='stylish', path=None):
+def diff(first_file, second_file, format_name='stylish', path=None):
     if path is None:
         path = []
     key_list = []
@@ -22,7 +22,7 @@ def generate_diff(first_file, second_file, format_name='stylish', path=None):
                 if key in second_file:
                     if isinstance(first_file[key], dict) and \
                             isinstance(second_file[key], dict):
-                        a = generate_diff(first_file[key],
+                        a = diff(first_file[key],
                                                second_file[key], format_name, newpath)
                         result_str += a
                     else:
@@ -65,7 +65,7 @@ def generate_diff(first_file, second_file, format_name='stylish', path=None):
                 if key in second_file:
                     if isinstance(first_file[key], dict) and \
                             isinstance(second_file[key], dict):
-                        a = generate_diff(first_file[key], second_file[key], format_name)
+                        a = diff(first_file[key], second_file[key], format_name)
                         updated_dict[key] = a
                     else:
                         if first_file[key] == second_file[key]:

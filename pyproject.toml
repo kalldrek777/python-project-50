@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["gamid <kalldrek@yandex.ru>"]
 readme = "README.md"
-packages = [{include = "gendiff_1"}]
+packages = [{include = "gendiff"}]
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
@@ -19,4 +19,4 @@ build-backend = "poetry.core.masonry.api"
 
 
 [tool.poetry.scripts]
-gendiff = "gendiff_1.scripts.gendiff:main"
+gendiff = "gendiff.scripts.gendiff:generate_diff"

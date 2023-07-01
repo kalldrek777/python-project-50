@@ -1,10 +1,10 @@
-from gendiff_1.gendiff_2 import generate_diff
+from gendiff.gendiff import diff
 import argparse
 import json
 import yaml
 
 
-def main(*args):
+def generate_diff(*args):
     if args:
         if args[0].endswith('.json'):
             first_file = json.load(open(args[0]))
@@ -18,13 +18,23 @@ def main(*args):
             with open(args[1], 'r') as f:
                 second_file = yaml.safe_load(f)
 
-        if args[2] == "plain":
-            return generate_diff(first_file, second_file)
-        elif args[2] == "json":
-            return json.dumps(generate_diff(first_file, second_file))
-        elif args[2] == "stylish":
-            res = generate_diff(first_file, second_file)
-            return formatter(res, replacer=' ', space_count=4, _lvl=1)
+        parse_result = diff(first_file, second_file, args.format)
+
+        if args.format == "stylish":
+            # parse_result = result(first_file, second_file, args.format)
+            return formatter(parse_result, replacer=' ', space_count=4, _lvl=1)
+        elif args.format == "plain":
+            # return result(first_file, second_file, args.format)[:-2]
+            return parse_result[:-1]
+        elif args.format == "json":
+            return json.dumps(parse_result)
+        # if args[2] == "plain":
+        #     return generate_diff(first_file, second_file)
+        # elif args[2] == "json":
+        #     return json.dumps(generate_diff(first_file, second_file))
+        # elif args[2] == "stylish":
+        #     res = generate_diff(first_file, second_file)
+        #     return formatter(res, replacer=' ', space_count=4, _lvl=1)
     else:
         return parse_args()
 
@@ -55,7 +65,7 @@ def parse_args():
         with open(args.second_file, 'r') as f:
             second_file = yaml.safe_load(f)
 
-    parse_result = generate_diff(first_file, second_file, args.format)
+    parse_result = diff(first_file, second_file, args.format)
     # return result(first_file, second_file, args.format)
     if args.format == "stylish":
         # parse_result = result(first_file, second_file, args.format)
@@ -145,4 +155,4 @@ def formatter(value, replacer=' ', space_count=1, _lvl=1):
 
 
 if __name__ == "__main__":
-    main()
+    generate_diff()
