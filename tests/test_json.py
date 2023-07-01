@@ -132,7 +132,7 @@ def test_yaml(diff_yaml_files):
                  '}')
 
     assert b == \
-           ("Property 'common.follow' was added with value: 'False'\n"
+               ("Property 'common.follow' was added with value: 'False'\n"
             "Property 'common.setting2' was removed\n"
             "Property 'common.setting3' was updated. From 'True' to 'None'\n"
             "Property 'common.setting4' was added with value: 'blah blah'\n"
