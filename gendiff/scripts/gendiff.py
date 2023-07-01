@@ -18,7 +18,7 @@ def generate_diff(*args):
             with open(args[1], 'r') as f:
                 second_file = yaml.safe_load(f)
 
-        if not args[2]:
+        if len(args) < 3:
             args.append("stylish")
         parse_result = diff(first_file, second_file, args[2])
 
