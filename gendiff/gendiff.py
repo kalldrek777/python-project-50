@@ -26,7 +26,7 @@ def diff(first_file, second_file, format_name='stylish', path=None):
                     if isinstance(first_file[key], dict) and \
                             isinstance(second_file[key], dict):
                         a = diff(first_file[key],
-                                               second_file[key], format_name, newpath)
+                                 second_file[key], format_name, newpath)
                         result_str += a
                     else:
                         if first_file[key] != second_file[key]:
@@ -89,7 +89,6 @@ def diff(first_file, second_file, format_name='stylish', path=None):
         return updated_dict
         # return generate_diff(updated_dict, replacer=' ', space_count=4, _lvl=1)
 
-
     # elif format_name == "json":
     #
     #     for key in key_list:
@@ -111,14 +110,6 @@ def diff(first_file, second_file, format_name='stylish', path=None):
     #             updated_dict['+ ' + key] = second_file[key]
     #
     #     return updated_dict
-
-
-
-
-
-
-
-
 
 # def result(first_file, second_file):
 #     key_list = []
