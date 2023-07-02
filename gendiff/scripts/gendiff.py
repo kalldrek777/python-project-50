@@ -39,7 +39,7 @@ def generate_diff(*args):
         #     res = generate_diff(first_file, second_file)
         #     return formatter(res, replacer=' ', space_count=4, _lvl=1)
     else:
-        return parse_args()
+        print(parse_args())
 
 
 def parse_args():
