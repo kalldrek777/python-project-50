@@ -49,8 +49,7 @@ def test_json(diff_json_files):
                  "    }\n"
                  "}")
     assert b == \
-           (
-            "Property 'common.follow' was added with value: false\n"
+           ("Property 'common.follow' was added with value: false\n"
             "Property 'common.setting2' was removed\n"
             "Property 'common.setting3' was updated. From true to null\n"
             "Property 'common.setting4' was added with value: 'blah blah'\n"
@@ -63,8 +62,7 @@ def test_json(diff_json_files):
             "Property 'group1.nest' was updated. From "
             "[complex value] to 'str'\n"
             "Property 'group2' was removed\n"
-            "Property 'group3' was added with value: [complex value]"
-           )
+            "Property 'group3' was added with value: [complex value]")
     assert json.loads(c) == json.load(open('test_format_json.json'))
 
 
@@ -115,8 +113,7 @@ def test_yaml(diff_yaml_files):
                  "    }\n"
                  "}")
     assert b == \
-           (
-            "Property 'common.follow' was added with value: false\n"
+           ("Property 'common.follow' was added with value: false\n"
             "Property 'common.setting2' was removed\n"
             "Property 'common.setting3' was updated. From true to null\n"
             "Property 'common.setting4' was added with value: 'blah blah'\n"
@@ -129,6 +126,5 @@ def test_yaml(diff_yaml_files):
             "Property 'group1.nest' was updated. From "
             "[complex value] to 'str'\n"
             "Property 'group2' was removed\n"
-            "Property 'group3' was added with value: [complex value]"
-           )
+            "Property 'group3' was added with value: [complex value]")
     assert json.loads(c) == json.load(open('test_format_json.json'))
