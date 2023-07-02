@@ -153,7 +153,8 @@ def formatter(value, replacer=' ', space_count=1, _lvl=1):
                                     space_count, _lvl + 1) + '\n'
         result += replacer * space_count * (_lvl - 1) + '}'
     else:
-        result = str(value)
+        value = json.dumps(value)
+        result = value
     return result
 
 
