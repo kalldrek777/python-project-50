@@ -135,7 +135,7 @@ def parse_args():
 #                               f"was added with value: [complex value]\n"
 #             else:
 #                 result_str += f"Property '{key_path}'" \
-#                               f" was added with value: '{second_file[key]}'\n"
+#                              f" was added with value: '{second_file[key]}'\n"
 #     return result_str
 
 
@@ -150,7 +150,7 @@ def formatter(value, replacer=' ', space_count=1, _lvl=1):
             else:
                 result += f'{replacer * space_count * _lvl}{el}: '
             result += formatter(val, replacer,
-                                    space_count, _lvl + 1) + '\n'
+                                space_count, _lvl + 1) + '\n'
         result += replacer * space_count * (_lvl - 1) + '}'
     else:
         value = json.dumps(value)
