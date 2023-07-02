@@ -154,7 +154,7 @@ def formatter(value, replacer=' ', space_count=1, _lvl=1):
         result += replacer * space_count * (_lvl - 1) + '}'
     else:
         value = json.dumps(value)
-        result = value
+        result = value.replace('"', '')
     return result
 
 

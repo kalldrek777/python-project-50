@@ -32,19 +32,19 @@ def diff(first_file, second_file, format_name='stylish', path=None):
                         if first_file[key] != second_file[key]:
                             key_path = '.'.join(newpath)
                             if isinstance(first_file[key], dict):
-                                second_file[key] = json.dumps(second_file[key])
+                                second_file[key] = json.dumps(second_file[key]).replace('"', "'")
                                 result_str += f"Property '{key_path}' was " \
                                               f"updated. From [complex value]" \
                                               f" to {second_file[key]}\n"
                             elif isinstance(second_file[key], dict):
-                                first_file[key] = json.dumps(first_file[key])
+                                first_file[key] = json.dumps(first_file[key]).replace('"', "'")
                                 result_str += f"Property '{key_path}'" \
                                               f" was updated. From " \
                                               f"{first_file[key]} to" \
                                               f" [complex value]\n"
                             else:
-                                first_file[key] = json.dumps(first_file[key])
-                                second_file[key] = json.dumps(second_file[key])
+                                first_file[key] = json.dumps(first_file[key]).replace('"', "'")
+                                second_file[key] = json.dumps(second_file[key]).replace('"', "'")
                                 result_str += f"Property '{key_path}' " \
                                               f"was updated. From " \
                                               f"{first_file[key]} to " \
@@ -59,7 +59,7 @@ def diff(first_file, second_file, format_name='stylish', path=None):
                     result_str += f"Property '{key_path}' " \
                                   f"was added with value: [complex value]\n"
                 else:
-                    second_file[key] = json.dumps(second_file[key])
+                    second_file[key] = json.dumps(second_file[key]).replace('"', "'")
                     result_str += f"Property '{key_path}'" \
                                   f" was added with value: {second_file[key]}\n"
         return result_str
