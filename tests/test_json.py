@@ -1,5 +1,5 @@
 import json
-from tests.fixtures import diff_json_files, diff_yaml_files
+from tests.fixtures.fixtures import diff_json_files, diff_yaml_files
 diff_json_files = diff_json_files
 diff_yaml_files = diff_yaml_files
 
@@ -65,7 +65,7 @@ def test_json(diff_json_files):
             "[complex value] to 'str'\n"
             "Property 'group2' was removed\n"
             "Property 'group3' was added with value: [complex value]")
-    assert json.loads(c) == json.load(open('test_format_json.json'))
+    assert json.loads(c) == json.load(open('tests/test_files/test_format_json.json'))
 
 
 def test_yaml(diff_yaml_files):
@@ -129,4 +129,4 @@ def test_yaml(diff_yaml_files):
             "[complex value] to 'str'\n"
             "Property 'group2' was removed\n"
             "Property 'group3' was added with value: [complex value]")
-    assert json.loads(c) == json.load(open('test_format_json.json'))
+    assert json.loads(c) == json.load(open('tests/test_files/test_format_json.json'))
