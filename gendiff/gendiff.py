@@ -1,4 +1,18 @@
 import json
+from gendiff.formatter import formatter
+from gendiff.read_files import read_file
+
+
+def generate_diff(first_file, second_file, format_):
+    first_file, second_file = read_file(first_file, second_file)
+    parse_result = diff(first_file, second_file, format_)
+
+    if format_ == "stylish":
+        return formatter(parse_result, replacer=' ', space_count=4, _lvl=1)
+    elif format_ == "plain":
+        return parse_result[:-1]
+    elif format_ == "json":
+        return json.dumps(parse_result)
 
 
 def diff(first_file, second_file, format_name='stylish', path=None):
@@ -93,3 +107,5 @@ def diff(first_file, second_file, format_name='stylish', path=None):
                 updated_dict['+ ' + key] = second_file[key]
 
         return updated_dict
+
+

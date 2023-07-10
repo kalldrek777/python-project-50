@@ -8,7 +8,10 @@ gendiff flat json files
 gendiff flat yaml files
 [![asciicast](https://asciinema.org/a/Sik3n5hKjMbl1yKsNFMGjyHgC.svg)](https://asciinema.org/a/Sik3n5hKjMbl1yKsNFMGjyHgC)
 
-gendiff json files
-[![asciicast](https://asciinema.org/a/671mCNd7L3utHC7zl662H3QOu.svg)](https://asciinema.org/a/671mCNd7L3utHC7zl662H3QOu)
-gendiff yaml files
-[![asciicast](https://asciinema.org/a/PZP7vMwHaKtMdP0qKE5E5wWcS.svg)](https://asciinema.org/a/PZP7vMwHaKtMdP0qKE5E5wWcS)
+
+gendiff format stylish
+[![asciicast](https://asciinema.org/a/1hAN146V8NtLZLvZKtB5vhZDf.svg)](https://asciinema.org/a/1hAN146V8NtLZLvZKtB5vhZDf)
+gendiff format plain
+[![asciicast](https://asciinema.org/a/F54IfJlAtaai8L4YbioXYSqYf.svg)](https://asciinema.org/a/F54IfJlAtaai8L4YbioXYSqYf)
+gendiff format json
+[![asciicast](https://asciinema.org/a/65XGblDTk2v2KZmM4lI7zczLZ.svg)](https://asciinema.org/a/65XGblDTk2v2KZmM4lI7zczLZ)
