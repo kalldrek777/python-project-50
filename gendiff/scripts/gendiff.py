@@ -1,8 +1,4 @@
 from gendiff.gendiff import generate_diff
-import json
-import yaml
-from gendiff.read_files import read_file
-from gendiff.formatter import formatter
 from gendiff.parser import parse_args
 
 

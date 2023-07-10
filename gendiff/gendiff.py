@@ -107,5 +107,3 @@ def diff(first_file, second_file, format_name='stylish', path=None):
                 updated_dict['+ ' + key] = second_file[key]
 
         return updated_dict
-
-

@@ -6,9 +6,9 @@ dist/
 .coverage
 coverage.xml
 .pytest_cache/
+python-project-50/file1.json
+python-project-50/file2.json
+python-project-50/filepath1.yml
+python-project-50/filepath2.yml
 .vim
-file1.json
-file2.json
-filepath1.yml
-filepath2.yml
 .idea/

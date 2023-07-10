@@ -1,9 +1,4 @@
 import argparse
-import json
-import yaml
-from gendiff.formatter import formatter
-from gendiff.gendiff import diff
-from gendiff.read_files import read_file
 
 
 def parse_args():
@@ -23,5 +18,3 @@ def parse_args():
 
     # first_file, second_file = read_file(args)
     return args.first_file, args.second_file, args.format
-
-
