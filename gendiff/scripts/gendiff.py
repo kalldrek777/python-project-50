@@ -4,6 +4,9 @@ from gendiff.parser import parse_args
 
 def main(*args):
     if args:
+        args = list(args)
+        if len(args) < 3:
+            args.append("stylish")
         first_file, second_file, format_ = args[0], args[1], args[2]
         parse_result = generate_diff(first_file, second_file, format_)
         return parse_result
