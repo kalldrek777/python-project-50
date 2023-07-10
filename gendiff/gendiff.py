@@ -3,7 +3,7 @@ from gendiff.formatter import formatter
 from gendiff.read_files import read_file
 
 
-def generate_diff(first_file, second_file, format_):
+def generate_diff(first_file, second_file, format_='stylish'):
     first_file, second_file = read_file(first_file, second_file)
     parse_result = diff(first_file, second_file, format_)
 
