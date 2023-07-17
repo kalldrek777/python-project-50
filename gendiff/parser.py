@@ -16,5 +16,4 @@ def parse_args():
 
     args = parser.parse_args()
 
-    # first_file, second_file = read_file(args)
     return args.first_file, args.second_file, args.format
