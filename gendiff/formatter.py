@@ -20,27 +20,18 @@ def formatter(value, replacer=' ', space_count=1, _lvl=1):
     return result
 
 
-def find_keys(dictionary, list_keys):
-    for k, v in dictionary.items():
-        if k[:1] == "+" or k[:1] == "-":
-            k = k[2:]
-        list_keys.append(k)
-        if isinstance(v, dict):
-            list_keys.append(find_keys(v, list_keys))
-    return list_keys
-
-
 def format_plain(dictionary, path=None, list_keys=None):
     result_str = ""
     if path is None:
         path = []
     if list_keys is None:
-        list_keys = find_keys(dictionary, [])
+        a, b = find_keys(dictionary, [])
+        list_keys = b
 
     for k, v in dictionary.items():
         if k[:1] == "+" or k[:1] == "-":
             newpath = path + [k[2:]]
-            if list_keys.count(k[2:]) == 2:
+            if list_keys.count(newpath) == 2:
                 key_path = '.'.join(newpath)
                 if k[:1] == "-":
                     if isinstance(v, dict):
@@ -79,3 +70,17 @@ def format_plain(dictionary, path=None, list_keys=None):
                 result_str += format_plain(v, path=newpath,
                                            list_keys=list_keys)
     return result_str
+
+
+def find_keys(dictionary, list_keys, path=None):
+    if path is None:
+        path = []
+    for k, v in dictionary.items():
+        if k[:1] == "+" or k[:1] == "-":
+            k = k[2:]
+        newpath = path + [k]
+        list_keys.append(newpath)
+        if isinstance(v, dict):
+            a, b = find_keys(v, list_keys, newpath)
+            newpath + [a]
+    return k, list_keys
