@@ -57,8 +57,8 @@ def format_plain(dictionary, path=None, list_keys=None):
                 elif k[:1] == "+":
                     key_path = '.'.join(newpath)
                     if isinstance(v, dict):
-                        result_str += f"Property '{key_path}' " \
-                                    f"was added with value: [complex value]\n"
+                        result_str += f"Property '{key_path}' was added" \
+                                      f" with value: [complex value]\n"
                     else:
                         v = json.dumps(v).replace('"', "'")
                         result_str += f"Property '{key_path}' " \
