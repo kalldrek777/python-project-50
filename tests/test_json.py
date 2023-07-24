@@ -1,5 +1,6 @@
 import json
 from tests.fixtures.fixtures import diff_json_files, diff_yaml_files
+
 diff_json_files = diff_json_files
 diff_yaml_files = diff_yaml_files
 

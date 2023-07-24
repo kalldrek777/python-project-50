@@ -1,5 +1,5 @@
 import json
-from gendiff.formatter import formatter, format_plain
+from gendiff.formatter import formatter, format_plain, json_format
 
 
 def gendiff_result(parse_result, format_):
@@ -8,4 +8,4 @@ def gendiff_result(parse_result, format_):
     elif format_ == "plain":
         return format_plain(parse_result)[:-1]
     elif format_ == "json":
-        return json.dumps(parse_result)
+        return json.dumps(json_format(parse_result))
