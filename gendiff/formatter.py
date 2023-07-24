@@ -28,47 +28,47 @@ def stylish(value, replacer=' ', space_count=1, _lvl=1):
                 if isinstance(i['value'], list) or \
                         isinstance(i['value'], dict):
                     result += stylish(i['value'],
-                                        replacer, space_count, _lvl + 1) + '\n'
+                                      replacer, space_count, _lvl + 1) + '\n'
                 else:
                     val = json.dumps(i['value']).replace('"', '') + '\n'
                     result += val
             if i['type'] == 'deleted':
                 key = '- ' + i['key']
                 result += f'{(replacer * space_count * _lvl)[2:]}{key}: '
-                if isinstance(i['value'], list)\
+                if isinstance(i['value'], list) \
                         or isinstance(i['value'], dict):
                     result += stylish(i['value'], replacer,
-                                        space_count, _lvl + 1) + '\n'
+                                      space_count, _lvl + 1) + '\n'
                 else:
                     val = json.dumps(i['value']).replace('"', '') + '\n'
                     result += val
             if i['type'] == 'updated':
                 key = '- ' + i['key']
                 result += f'{(replacer * space_count * _lvl)[2:]}{key}: '
-                if isinstance(i['value1'], list) or\
+                if isinstance(i['value1'], list) or \
                         isinstance(i['value1'], dict):
                     result += stylish(i['value1'], replacer,
-                                        space_count, _lvl + 1) + '\n'
+                                      space_count, _lvl + 1) + '\n'
                 else:
                     val = json.dumps(i['value1']).replace('"', '') + '\n'
                     result += val
 
                 key = '+ ' + i['key']
                 result += f'{(replacer * space_count * _lvl)[2:]}{key}: '
-                if isinstance(i['value2'], list) or\
+                if isinstance(i['value2'], list) or \
                         isinstance(i['value2'], dict):
                     result += stylish(i['value2'],
-                                        replacer, space_count, _lvl + 1) + '\n'
+                                      replacer, space_count, _lvl + 1) + '\n'
                 else:
                     val = json.dumps(i['value2']).replace('"', '') + '\n'
                     result += val
             if i['type'] == 'saved':
                 key = i['key']
                 result += f'{replacer * space_count * _lvl}{key}: '
-                if isinstance(i['value'], list) or\
+                if isinstance(i['value'], list) or \
                         isinstance(i['value'], dict):
                     result += stylish(i['value'], replacer,
-                                        space_count, _lvl + 1) + '\n'
+                                      space_count, _lvl + 1) + '\n'
                 else:
                     val = json.dumps(i['value']).replace('"', '') + '\n'
                     result += val
@@ -78,13 +78,14 @@ def stylish(value, replacer=' ', space_count=1, _lvl=1):
         for el, val in value.items():
             result += f'{replacer * space_count * _lvl}{el}: '
             result += stylish(val, replacer,
-                                space_count, _lvl + 1) + '\n'
+                              space_count, _lvl + 1) + '\n'
         result += replacer * space_count * (_lvl - 1) + '}'
     else:
         value = json.dumps(value)
         result = value.replace('"', '')
 
     return result
+
 
 # def format_plain(dictionary, path=None, list_keys=None):
 #     result_str = ""
@@ -189,7 +190,6 @@ def json_format(value):
             else:
                 result += str(i)
     return result
-
 
 # def find_keys(dictionary, list_keys, path=None):
 #     if path is None:
