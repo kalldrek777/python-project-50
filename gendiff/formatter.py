@@ -1,7 +1,7 @@
 import json
 
 
-# def formatter(value, replacer=' ', space_count=1, _lvl=1):
+# def stylish(value, replacer=' ', space_count=1, _lvl=1):
 #     if isinstance(value, dict):
 #         result = '{\n'
 #         for el, val in value.items():
@@ -11,14 +11,14 @@ import json
 #                 result += ' '
 #             else:
 #                 result += f'{replacer * space_count * _lvl}{el}: '
-#             result += formatter(val, replacer,
+#             result += stylish(val, replacer,
 #                                 space_count, _lvl + 1) + '\n'
 #         result += replacer * space_count * (_lvl - 1) + '}'
 #     else:
 #         value = json.dumps(value)
 #         result = value.replace('"', '')
 #     return result
-def formatter(value, replacer=' ', space_count=1, _lvl=1):
+def stylish(value, replacer=' ', space_count=1, _lvl=1):
     if isinstance(value, list):
         result = '{\n'
         for i in value:
@@ -27,7 +27,7 @@ def formatter(value, replacer=' ', space_count=1, _lvl=1):
                 result += f'{(replacer * space_count * _lvl)[2:]}{key}: '
                 if isinstance(i['value'], list) or \
                         isinstance(i['value'], dict):
-                    result += formatter(i['value'],
+                    result += stylish(i['value'],
                                         replacer, space_count, _lvl + 1) + '\n'
                 else:
                     val = json.dumps(i['value']).replace('"', '') + '\n'
@@ -37,7 +37,7 @@ def formatter(value, replacer=' ', space_count=1, _lvl=1):
                 result += f'{(replacer * space_count * _lvl)[2:]}{key}: '
                 if isinstance(i['value'], list)\
                         or isinstance(i['value'], dict):
-                    result += formatter(i['value'], replacer,
+                    result += stylish(i['value'], replacer,
                                         space_count, _lvl + 1) + '\n'
                 else:
                     val = json.dumps(i['value']).replace('"', '') + '\n'
@@ -47,7 +47,7 @@ def formatter(value, replacer=' ', space_count=1, _lvl=1):
                 result += f'{(replacer * space_count * _lvl)[2:]}{key}: '
                 if isinstance(i['value1'], list) or\
                         isinstance(i['value1'], dict):
-                    result += formatter(i['value1'], replacer,
+                    result += stylish(i['value1'], replacer,
                                         space_count, _lvl + 1) + '\n'
                 else:
                     val = json.dumps(i['value1']).replace('"', '') + '\n'
@@ -57,7 +57,7 @@ def formatter(value, replacer=' ', space_count=1, _lvl=1):
                 result += f'{(replacer * space_count * _lvl)[2:]}{key}: '
                 if isinstance(i['value2'], list) or\
                         isinstance(i['value2'], dict):
-                    result += formatter(i['value2'],
+                    result += stylish(i['value2'],
                                         replacer, space_count, _lvl + 1) + '\n'
                 else:
                     val = json.dumps(i['value2']).replace('"', '') + '\n'
@@ -67,7 +67,7 @@ def formatter(value, replacer=' ', space_count=1, _lvl=1):
                 result += f'{replacer * space_count * _lvl}{key}: '
                 if isinstance(i['value'], list) or\
                         isinstance(i['value'], dict):
-                    result += formatter(i['value'], replacer,
+                    result += stylish(i['value'], replacer,
                                         space_count, _lvl + 1) + '\n'
                 else:
                     val = json.dumps(i['value']).replace('"', '') + '\n'
@@ -77,7 +77,7 @@ def formatter(value, replacer=' ', space_count=1, _lvl=1):
         result = '{\n'
         for el, val in value.items():
             result += f'{replacer * space_count * _lvl}{el}: '
-            result += formatter(val, replacer,
+            result += stylish(val, replacer,
                                 space_count, _lvl + 1) + '\n'
         result += replacer * space_count * (_lvl - 1) + '}'
     else:
