@@ -93,8 +93,7 @@ def json_output(value):
 
 
 def exam(value, replacer, space_count, _lvl):
-    if (isinstance(value, list) or
-            isinstance(value, dict)):
+    if isinstance(value, list) or isinstance(value, dict):
         result = stylish(value,
                          replacer, space_count, _lvl + 1) + '\n'
     else:
