@@ -1,15 +1,15 @@
 import json
-from gendiff.formatter import stylish, format_plain, json_format
+from gendiff.formatter import stylish, format_plain, json_output
 
 
-def format(parse_result, format_):
-    if format_ == "stylish":
+def format(parse_result, format):
+    if format == "stylish":
         return stylish(parse_result, replacer=' ', space_count=4, _lvl=1)
-    elif format_ == "plain":
+    elif format == "plain":
         return format_plain(parse_result)[:-1]
-    elif format_ == "json":
-        return json_dumps(parse_result)
+    elif format == "json":
+        return format_json(json_output(parse_result))
 
 
-def json_dumps(val):
-    return json.dumps(json_format(val))
+def format_json(val):
+    return json.dumps(val)

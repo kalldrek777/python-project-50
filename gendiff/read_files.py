@@ -4,9 +4,16 @@ import yaml
 
 def read_file(file):
     if file.endswith('.json'):
-        file = json.load(open(file))
+        extension = 'json'
     else:
-        with open(file, 'r') as f:
-            file = yaml.safe_load(f)
+        extension = 'yaml'
+    result = parse(open(file), extension)
+    return result
 
+
+def parse(file, extension):
+    if extension == 'yaml':
+        file = yaml.safe_load(file)
+    else:
+        file = json.load(file)
     return file
