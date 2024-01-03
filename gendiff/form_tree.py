@@ -25,7 +25,6 @@ def diff(dict1, dict2, format_name='stylish'):
                             'type': 'nested',
                             'value': dict1[key]
                         })
-                        # updated_dict[key] = dict1[key]
                     elif dict1[key] != dict2[key]:
                         result.append({
                             'key': key,
