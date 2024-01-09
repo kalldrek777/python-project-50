@@ -1,12 +1,12 @@
 import json
 
 
-replacer = ' '
-space_count = 4
-_lvl = 1
+REPLACER = ' '
+SPACE_COUNT = 4
+_LVL = 1
 
 
-def stylish(value, replacer=replacer, space_count=space_count, _lvl=_lvl):
+def stylish(value, replacer=REPLACER, space_count=SPACE_COUNT, _lvl=_LVL):
     if isinstance(value, list):
         result = '{\n'
         for item in value:
@@ -47,7 +47,7 @@ def stylish(value, replacer=replacer, space_count=space_count, _lvl=_lvl):
 def exam(value, _lvl):
     if isinstance(value, list) or isinstance(value, dict):
         result = stylish(value,
-                         replacer, space_count, _lvl + 1) + '\n'
+                         REPLACER, SPACE_COUNT, _lvl + 1) + '\n'
     else:
         val = json.dumps(value).replace('"', '') + '\n'
         result = val
