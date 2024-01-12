@@ -6,12 +6,8 @@ def format_plain(data, path=None):
     if path is None:
         path = []
     for item in data:
-        print(1)
-        print(path, item['key'])
         newpath = path + [item['key']]
-        print(newpath)
         key_path = '.'.join(newpath)
-        print(key_path)
         if item['type'] == 'nested':
             result_str += nested(item, newpath)
         if item['type'] == 'added':
