@@ -10,4 +10,3 @@ def formatter(parse_result, format):
         return format_plain(parse_result)[:-1]
     elif format == "json":
         return format_json(parse_result)
-

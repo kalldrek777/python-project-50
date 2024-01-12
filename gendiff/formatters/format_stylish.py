@@ -11,15 +11,19 @@ def format_stylish(value, replacer=REPLACER, space_count=SPACE_COUNT, depth=1):
             key = item['key']
             if item['type'] == 'added':
                 value = exam(item['value'], depth)
-                result += f'{(replacer * space_count * depth)[2:]}+ {key}: {value}'
+                result += \
+                    f'{(replacer * space_count * depth)[2:]}+ {key}: {value}'
             if item['type'] == 'deleted':
                 value = exam(item['value'], depth)
-                result += f'{(replacer * space_count * depth)[2:]}- {key}: {value}'
+                result += \
+                    f'{(replacer * space_count * depth)[2:]}- {key}: {value}'
             if item['type'] == 'updated':
                 value1 = exam(item['value1'], depth)
                 value2 = exam(item['value2'], depth)
-                result += f'{(replacer * space_count * depth)[2:]}- {key}: {value1}'
-                result += f'{(replacer * space_count * depth)[2:]}+ {key}: {value2}'
+                result += \
+                    f'{(replacer * space_count * depth)[2:]}- {key}: {value1}'
+                result += \
+                    f'{(replacer * space_count * depth)[2:]}+ {key}: {value2}'
             if item['type'] == 'nested':
                 value = exam(item['value'], depth)
                 result += f'{(replacer * space_count * depth)}{key}: {value}'

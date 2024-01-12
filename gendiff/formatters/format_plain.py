@@ -37,7 +37,7 @@ def updated(item, key_path):
     else:
         value = dumps_to_json(item['value2'])
         result_str += f" to" \
-                     f" {value}\n"
+                      f" {value}\n"
     return result_str
 
 
