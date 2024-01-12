@@ -12,13 +12,13 @@ def test_json(diff_json_files):
     assert a == stylish_standart
     assert b == plain_standart
 
-    assert (json.loads(c) ==
-            json.load(open('tests/fixtures/standarts/json_standart.json')))
+    assert (json.loads(c) == json.load(
+        open('tests/fixtures/standarts/json_standart.json')))
 
 
 def test_yaml(diff_yaml_files):
     a, b, c = diff_yaml_files
     assert a == stylish_standart
     assert b == plain_standart
-    assert (json.loads(c) ==
-            json.load(open('tests/fixtures/standarts/json_standart.json')))
+    assert (json.loads(c) == json.load(
+        open('tests/fixtures/standarts/json_standart.json')))
