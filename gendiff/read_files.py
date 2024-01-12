@@ -5,8 +5,10 @@ import yaml
 def read_file(file):
     if file.endswith('.json'):
         extension = 'json'
-    else:
+    elif file.endswith('.yaml') or file.endswith('.yml'):
         extension = 'yaml'
+    else:
+        raise 'Wrong format. Gendiff work with .yaml, .yml, .json file'
     result = parse(open(file), extension)
     return result
 

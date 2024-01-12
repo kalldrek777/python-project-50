@@ -1,4 +1,4 @@
-#!/home/gamid/python-project-50/.venv/bin/python3
+#! /bin/python
 from gendiff.gendiff import generate_diff
 from gendiff.parser import parse_args
 
