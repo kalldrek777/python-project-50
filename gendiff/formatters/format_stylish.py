@@ -1,59 +1,61 @@
-import json
-
 REPLACER = ' '
 SPACE_COUNT = 4
 
 
-def format_stylish(value, replacer=REPLACER, space_count=SPACE_COUNT, depth=1):
-    if isinstance(value, list):
-        result = '{\n'
-        for item in value:
-            key = item['key']
-            if item['type'] == 'added':
-                value = exam(item['value'], depth)
-                result += \
-                    f'{(replacer * space_count * depth)[2:]}+ {key}: {value}'
-            if item['type'] == 'deleted':
-                value = exam(item['value'], depth)
-                result += \
-                    f'{(replacer * space_count * depth)[2:]}- {key}: {value}'
-            if item['type'] == 'updated':
-                value1 = exam(item['value1'], depth)
-                value2 = exam(item['value2'], depth)
-                result += \
-                    f'{(replacer * space_count * depth)[2:]}- {key}: {value1}'
-                result += \
-                    f'{(replacer * space_count * depth)[2:]}+ {key}: {value2}'
-            if item['type'] == 'nested':
-                value = exam(item['value'], depth)
-                result += f'{(replacer * space_count * depth)}{key}: {value}'
+def format_stylish(list_of_nodes, replacer=REPLACER,
+                   space_count=SPACE_COUNT, depth=1):
+    if isinstance(list_of_nodes, list):
+        result = ['{']
+        indent = replacer * space_count * depth
+        for node in list_of_nodes:
+            key = node['key']
+            if node['type'] == 'added':
+                result.append(
+                    f'{indent[2:]}+ {key}: {exam(node["value"], depth)}'
+                )
+            if node['type'] == 'deleted':
+                result.append(
+                    f'{(indent)[2:]}- {key}: {exam(node["value"], depth)}'
+                )
+            if node['type'] == 'updated':
+                result.extend([
+                    f'{(indent)[2:]}- {key}: {exam(node["value1"], depth)}',
+                    f'{(indent)[2:]}+ {key}: {exam(node["value2"], depth)}'
+                ])
+            if node['type'] == 'nested':
+                result.append(
+                    f'{(indent)}{key}: {exam(node["value"], depth)}'
+                )
 
-        result += replacer * space_count * (depth - 1) + '}'
+        result.append(replacer * space_count * (depth - 1) + '}')
     else:
-        result = format_dic(value, replacer, space_count, depth)
+        result = format_dic(list_of_nodes, replacer, space_count, depth)
 
-    return result
+    return '\n'.join(result)
 
 
 def format_dic(value, replacer=REPLACER, space_count=SPACE_COUNT, depth=1):
     if isinstance(value, dict):
-        result = '{\n'
+        result = ['{']
         for el, val in value.items():
-            result += f'{replacer * space_count * depth}{el}: '
-            result += format_stylish(val, replacer,
-                                     space_count, depth + 1) + '\n'
-        result += replacer * space_count * (depth - 1) + '}'
+            result.append(
+                f'{replacer * space_count * depth}{el}: '
+                f'{(format_stylish(val, replacer, space_count, depth + 1))}'
+                          )
+        result.append(f'{replacer * space_count * (depth - 1)}' + '}')
     else:
-        value = json.dumps(value)
-        result = value.replace('"', '')
+        result = [exam(value, depth)]
     return result
 
 
-def exam(value, depth):
-    if isinstance(value, list) or isinstance(value, dict):
-        result = format_stylish(value,
-                                REPLACER, SPACE_COUNT, depth + 1) + '\n'
+def exam(data, depth):
+    if isinstance(data, list) or isinstance(data, dict):
+        result = format_stylish(data,
+                                REPLACER, SPACE_COUNT, depth + 1)
+        return result
+    elif type(data) is bool:
+        return str(data).lower()
+    elif data is None:
+        return 'null'
     else:
-        val = json.dumps(value).replace('"', '') + '\n'
-        result = val
-    return result
+        return str(data)

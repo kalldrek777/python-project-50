@@ -1,6 +1,6 @@
 from gendiff.read_files import read_file
-from gendiff.gendiff_result import formatter
-from gendiff.form_tree import diff
+from gendiff.formatters.format_gendiff import formatter
+from gendiff.tree import diff
 
 
 def generate_diff(first_file, second_file, format_output='stylish'):
