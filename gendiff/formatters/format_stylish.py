@@ -11,20 +11,20 @@ def format_stylish(list_of_nodes, replacer=REPLACER,
             key = node['key']
             if node['type'] == 'added':
                 result.append(
-                    f'{indent[2:]}+ {key}: {exam(node["value"], depth)}'
+                    f'{indent[2:]}+ {key}: {to_str(node["value"], depth)}'
                 )
             if node['type'] == 'deleted':
                 result.append(
-                    f'{(indent)[2:]}- {key}: {exam(node["value"], depth)}'
+                    f'{(indent)[2:]}- {key}: {to_str(node["value"], depth)}'
                 )
             if node['type'] == 'updated':
                 result.extend([
-                    f'{(indent)[2:]}- {key}: {exam(node["value1"], depth)}',
-                    f'{(indent)[2:]}+ {key}: {exam(node["value2"], depth)}'
+                    f'{(indent)[2:]}- {key}: {to_str(node["value1"], depth)}',
+                    f'{(indent)[2:]}+ {key}: {to_str(node["value2"], depth)}'
                 ])
             if node['type'] == 'nested':
                 result.append(
-                    f'{(indent)}{key}: {exam(node["value"], depth)}'
+                    f'{(indent)}{key}: {to_str(node["value"], depth)}'
                 )
 
         result.append(replacer * space_count * (depth - 1) + '}')
@@ -41,14 +41,14 @@ def format_dic(value, replacer=REPLACER, space_count=SPACE_COUNT, depth=1):
             result.append(
                 f'{replacer * space_count * depth}{el}: '
                 f'{(format_stylish(val, replacer, space_count, depth + 1))}'
-                          )
+            )
         result.append(f'{replacer * space_count * (depth - 1)}' + '}')
     else:
-        result = [exam(value, depth)]
+        result = [to_str(value, depth)]
     return result
 
 
-def exam(data, depth):
+def to_str(data, depth):
     if isinstance(data, list) or isinstance(data, dict):
         result = format_stylish(data,
                                 REPLACER, SPACE_COUNT, depth + 1)

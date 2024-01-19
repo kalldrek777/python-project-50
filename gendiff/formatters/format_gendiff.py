@@ -7,6 +7,6 @@ def formatter(parse_result, format):
     if format == "stylish":
         return format_stylish(parse_result)
     elif format == "plain":
-        return format_plain(parse_result)[:-1]
+        return format_plain(parse_result)
     elif format == "json":
         return format_json(parse_result)
