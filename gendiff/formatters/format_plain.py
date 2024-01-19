@@ -19,6 +19,7 @@ def format_plain(data, path=None):
     result = [item for item in result if item != '']
     return '\n'.join(result)
 
+
 def updated(item, key_path):
     if isinstance(item['value1'], dict):
         value_from = f"Property '{key_path}' was " \
