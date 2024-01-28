@@ -11,8 +11,8 @@
 
 
 gendiff format stylish
-[![asciicast](https://asciinema.org/a/hkVW0RjAv12DWAuCtJqEM6tkZ.svg)](https://asciinema.org/a/hkVW0RjAv12DWAuCtJqEM6tkZ)
+[![asciicast](https://asciinema.org/a/eZRkqhn2C8RERUi98H9btIQqr.svg)](https://asciinema.org/a/eZRkqhn2C8RERUi98H9btIQqr)
 gendiff format plain
-[![asciicast](https://asciinema.org/a/ObBzHM5ZpQKcwvAXEdBHWcN74.svg)](https://asciinema.org/a/ObBzHM5ZpQKcwvAXEdBHWcN74)
+[![asciicast](https://asciinema.org/a/A5qR7oW5M4gXzm2pB1Yeqn9zn.svg)](https://asciinema.org/a/A5qR7oW5M4gXzm2pB1Yeqn9zn)
 gendiff format json
-[![asciicast](https://asciinema.org/a/EnOtNqgyo1tu5Q4rVASuCFWE0.svg)](https://asciinema.org/a/EnOtNqgyo1tu5Q4rVASuCFWE0)
+[![asciicast](https://asciinema.org/a/s8DZkL3zRh0R3oDeiD3hahdoC.svg)](https://asciinema.org/a/s8DZkL3zRh0R3oDeiD3hahdoC)

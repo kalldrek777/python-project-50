@@ -2,20 +2,20 @@ import json
 import yaml
 
 
-def read_file(file):
-    if file.endswith('.json'):
+def read_file(data):
+    if data.endswith('.json'):
         extension = 'json'
-    elif file.endswith('.yaml') or file.endswith('.yml'):
+    elif data.endswith('.yaml') or data.endswith('.yml'):
         extension = 'yaml'
     else:
-        raise 'Wrong format. Gendiff work with .yaml, .yml, .json file'
-    result = parse(open(file), extension)
+        raise 'Wrong format. Gendiff work with .yaml, .yml, .json data'
+    result = parse(open(data), extension)
     return result
 
 
-def parse(file, extension):
+def parse(data, extension):
     if extension == 'yaml':
-        file = yaml.safe_load(file)
-    else:
-        file = json.load(file)
-    return file
+        data = yaml.safe_load(data)
+    elif extension == 'json':
+        data = json.load(data)
+    return data

@@ -29,12 +29,13 @@ def format_stylish(list_of_nodes, replacer=REPLACER,
 
         result.append(replacer * space_count * (depth - 1) + '}')
     else:
-        result = format_dic(list_of_nodes, replacer, space_count, depth)
+        result = format_dictionary(list_of_nodes, replacer, space_count, depth)
 
     return '\n'.join(result)
 
 
-def format_dic(value, replacer=REPLACER, space_count=SPACE_COUNT, depth=1):
+def format_dictionary(value, replacer=REPLACER,
+                      space_count=SPACE_COUNT, depth=1):
     if isinstance(value, dict):
         result = ['{']
         for el, val in value.items():
