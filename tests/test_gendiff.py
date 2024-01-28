@@ -1,7 +1,10 @@
 import json
-from tests.fixtures.fixtures import diff_format_stylish, diff_format_plain, diff_format_json
+from tests.fixtures.fixtures import (diff_format_stylish,
+                                     diff_format_plain,
+                                     diff_format_json)
 from tests.fixtures.standarts.stylish_standart import stylish_standart
 from tests.fixtures.standarts.plain_standart import plain_standart
+
 
 diff_format_stylish = diff_format_stylish
 diff_format_plain = diff_format_plain
